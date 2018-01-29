@@ -1,0 +1,43 @@
+# Template file for 'libcrystalhd'
+pkgname=libcrystalhd
+version=3
+revision=1
+build_style=gnu-makefile
+hostmakedepends="unzip"
+create_wrksrc="yes"
+short_desc="Broadcom BCM970012/BCM970015 Crystal HD device interface library"
+maintainer="Eric Siegel <NTICompass@gmail.com>"
+license="GPL-3"
+homepage="https://github.com/dbason/crystalhd"
+distfiles="${homepage}/archive/master.zip>${pkgname}-${version}.zip"
+checksum=ffe675823c7b13e66a4c30bdf18161b87b85383d24fbf02ad2f1899072e1e880
+shlib_provides="libcrystalhd.so.3"
+
+do_build() {
+	cd ${wrksrc}/crystalhd-master/linux_lib/libcrystalhd
+	make ${makejobs}
+}
+
+do_install() {
+	cd ${wrksrc}/crystalhd-master/linux_lib/libcrystalhd
+	make DESTDIR="${DESTDIR}" install
+
+	vmkdir usr/lib/firmware
+	vcopy ${DESTDIR}/lib/firmware/* usr/lib/firmware
+
+	rm ${DESTDIR}/lib/firmware/bcm70012fw.bin
+	rm ${DESTDIR}/lib/firmware/bcm70015fw.bin
+}
+
+pkg_install() {
+	vmove usr/lib/libcrystalhd.so*
+	vmove usr/lib/firmware
+}
+
+libcrystalhd-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+	}
+}
