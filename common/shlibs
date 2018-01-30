@@ -3078,3 +3078,12 @@ libzuluCrypt.so.1.2.0 zulucrypt-5.2.0_1
 libnfdump-1.6.15.so nfdump-1.6.15_1
 libttfautohint.so.1 ttfautohint-1.8.1_1
 libcrystalhd.so.3 libcrystalhd-3_1
+libavdevice.so.57 libavdevice-crystalhd-3.1.3_1
+libavformat.so.57 libavformat-crystalhd-3.1.3_1
+libswscale.so.4 libswscale-crystalhd-3.1.3_1
+libswresample.so.2 libswresample-crystalhd-3.1.3_1
+libavresample.so.3 libavresample-crystalhd-3.1.3_1
+libpostproc.so.54 libpostproc-crystalhd-3.1.3_1
+libavcodec.so.57 libavcodec-crystalhd-3.1.3_1
+libavutil.so.55 libavutil-crystalhd-3.1.3_1
+libavfilter.so.6 libavfilter-crystalhd-3.1.3_1
